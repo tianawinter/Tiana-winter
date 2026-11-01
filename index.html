@@ -70,6 +70,15 @@ section[id],div[id]{scroll-margin-top:64px}
 .search input{flex:1;padding:16px 18px;border:0;font:300 16px var(--body);min-width:0}
 .search button{padding:0 32px;border:0;background:var(--taupe);color:var(--white);font:400 13px var(--body);letter-spacing:.24em;text-transform:uppercase;cursor:pointer}
 /* intro */
+.looking{position:relative;display:inline-block;margin-top:22px}
+.looking>button{display:inline-flex;align-items:center;gap:14px;padding:16px 34px;border:1px solid var(--white);background:rgba(255,255,255,.08);backdrop-filter:blur(4px);color:var(--white);font:400 13px var(--body);letter-spacing:.24em;text-transform:uppercase;cursor:pointer;transition:.25s}
+.looking>button:hover,.looking.open>button{background:var(--taupe);border-color:var(--taupe)}
+.looking>button i{font-style:normal;transition:transform .25s}
+.looking.open>button i{transform:rotate(180deg)}
+.looking ul{position:absolute;left:50%;top:calc(100% + 8px);transform:translate(-50%,-6px);min-width:100%;list-style:none;padding:6px 0;margin:0;background:var(--cream);box-shadow:0 18px 40px rgba(0,0,0,.28);opacity:0;visibility:hidden;transition:.25s;z-index:5}
+.looking.open ul{opacity:1;visibility:visible;transform:translate(-50%,0)}
+.looking li a{display:block;padding:14px 28px;color:var(--deep);text-decoration:none;font:400 13px var(--body);letter-spacing:.24em;text-transform:uppercase;white-space:nowrap}
+.looking li a:hover,.looking li a:focus-visible{background:rgba(163,143,124,.2)}
 .hero-photo{padding:80px 0 0}
 .hero-photo img{aspect-ratio:16/8;object-fit:cover;object-position:center 30%}
 .intro{padding-bottom:40px}
@@ -244,6 +253,10 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
       <input type="text" placeholder="City, neighborhood, address" aria-label="Search by city, neighborhood or address">
       <button type="submit">Search</button>
     </form>
+    </div>
+    <div class="looking" id="looking">
+      <button type="button" aria-expanded="false" aria-controls="looking-menu">Looking to: Buy, Sell, or Invest <i aria-hidden="true">&#9662;</i></button>
+      <ul id="looking-menu" role="list"><li><a href="get-started.html?intent=buy">Buy</a></li><li><a href="get-started.html?intent=sell">Sell</a></li><li><a href="get-started.html?intent=invest">Invest</a></li></ul>
     </div>
   </div>
 </section>
@@ -516,6 +529,13 @@ f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.titl
 (function(){document.querySelectorAll('.rcard .rtxt').forEach(function(t){if(t.scrollHeight<=t.clientHeight+2)return;var b=document.createElement('button');b.type='button';b.className='more';b.textContent='Read more';b.addEventListener('click',function(){var o=t.classList.toggle('open');b.textContent=o?'Show less':'Read more'});t.after(b)})})();
 (function(){var t=document.querySelector('.gr-track');if(!t)return;
 document.querySelectorAll('.gr-ctrl button').forEach(function(b){b.addEventListener('click',function(){var c=t.querySelector('.rcard');t.scrollBy({left:b.dataset.dir*(c.offsetWidth+22),behavior:'smooth'})})})})();
+</script>
+<script>
+(function(){var w=document.getElementById('looking');if(!w)return;var b=w.querySelector('button');
+function set(o){w.classList.toggle('open',o);b.setAttribute('aria-expanded',o)}
+b.addEventListener('click',function(e){e.stopPropagation();set(!w.classList.contains('open'))});
+document.addEventListener('click',function(e){if(!w.contains(e.target))set(false)});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'){set(false);b.focus()}})})();
 </script>
 </body>
 </html>
