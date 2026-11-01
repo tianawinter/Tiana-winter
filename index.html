@@ -70,7 +70,7 @@ section[id],div[id]{scroll-margin-top:64px}
 .search input{flex:1;padding:16px 18px;border:0;font:300 16px var(--body);min-width:0}
 .search button{padding:0 32px;border:0;background:var(--taupe);color:var(--white);font:400 13px var(--body);letter-spacing:.24em;text-transform:uppercase;cursor:pointer}
 /* intro */
-.looking{position:relative;display:inline-block;margin-top:22px}
+.looking{position:relative;display:inline-block;margin-top:44px}
 .looking>button{display:inline-flex;align-items:center;gap:14px;padding:16px 34px;border:1px solid var(--white);background:rgba(255,255,255,.08);backdrop-filter:blur(4px);color:var(--white);font:400 13px var(--body);letter-spacing:.24em;text-transform:uppercase;cursor:pointer;transition:.25s}
 .looking>button:hover,.looking.open>button{background:var(--taupe);border-color:var(--taupe)}
 .looking>button i{font-style:normal;transition:transform .25s}
@@ -262,15 +262,6 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
   <div class="wrap">
     <p class="eyebrow">Elevate your real estate experience with</p>
     <h1>The Winter Haven Group</h1>
-    <!-- ===== IDX SLOT 1: QUICK SEARCH (hero) =====
-         Replace everything inside <div id="idx-search-slot"> with your iHomefinder
-         quick-search embed code. The plain form below is only a stand-in. -->
-    <div id="idx-search-slot">
-    <form class="search" action="#listings" role="search" aria-label="Property search">
-      <input type="text" placeholder="City, neighborhood, address" aria-label="Search by city, neighborhood or address">
-      <button type="submit">Search</button>
-    </form>
-    </div>
     <div class="looking" id="looking">
       <button type="button" aria-expanded="false" aria-controls="looking-menu">Looking to: Buy, Sell, or Invest <i aria-hidden="true">&#9662;</i></button>
       <ul id="looking-menu" role="list"><li><a href="get-started.html?intent=buy">Buy</a></li><li><a href="get-started.html?intent=sell">Sell</a></li><li><a href="get-started.html?intent=invest">Invest</a></li></ul>
