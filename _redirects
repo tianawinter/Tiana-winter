@@ -1,0 +1,5 @@
+# Private review link: send to Tiana's Google "write a review" page
+/review   https://search.google.com/local/writereview?placeid=ChIJU-LMCpA9XIgRGIYRDWGwMhI   302
+/reviews  https://search.google.com/local/writereview?placeid=ChIJU-LMCpA9XIgRGIYRDWGwMhI   302
+# Clean URL for the booking page
+/book     /book.html   200
