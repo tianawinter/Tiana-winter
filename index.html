@@ -33,6 +33,8 @@ h2{font-size:clamp(30px,4.6vw,52px)}
 .frame{position:relative}
 .frame::after{content:"";position:absolute;inset:16px -16px -16px 16px;border:1px solid var(--taupe);pointer-events:none}
 .frame img{width:100%;position:relative;z-index:1}
+#idx-search-slot,#idx-featured-slot{width:100%}
+#idx-disclaimer p{max-width:900px}
 /* header */
 header{position:fixed;inset:0 0 auto;z-index:50;padding:18px 0;color:var(--white);transition:background .3s,padding .3s,box-shadow .3s}
 header.solid{background:rgba(44,61,66,.96);padding:10px 0;box-shadow:0 1px 0 rgba(255,255,255,.12);backdrop-filter:blur(6px)}
@@ -138,10 +140,15 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
   <div class="wrap">
     <p class="eyebrow">Elevate your real estate experience with</p>
     <h1>The Winter Haven Group</h1>
+    <!-- ===== IDX SLOT 1: QUICK SEARCH (hero) =====
+         Replace everything inside <div id="idx-search-slot"> with your iHomefinder
+         quick-search embed code. The plain form below is only a stand-in. -->
+    <div id="idx-search-slot">
     <form class="search" action="#listings" role="search" aria-label="Property search">
       <input type="text" placeholder="City, neighborhood, address" aria-label="Search by city, neighborhood or address">
       <button type="submit">Search</button>
     </form>
+    </div>
   </div>
 </section>
 
@@ -184,10 +191,15 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
   <div class="wrap center">
     <h2>Featured listings</h2>
     <p style="margin-top:12px;color:var(--sage)">Listings appear here once your MLS/IDX feed is connected.</p>
+    <!-- ===== IDX SLOT 2: FEATURED LISTINGS =====
+         Replace everything inside <div id="idx-featured-slot"> with your iHomefinder
+         featured-listings / Market embed code. The gray cards are stand-ins. -->
+    <div id="idx-featured-slot">
     <div class="lgrid" style="text-align:left">
       <div class="lcard"><div class="ph">Listing photo</div><div class="t"><b>$000,000</b><span>0 Beds | 0 Baths | 0,000 SqFt</span><i>Street address, City, TN</i></div></div>
       <div class="lcard"><div class="ph">Listing photo</div><div class="t"><b>$000,000</b><span>0 Beds | 0 Baths | 0,000 SqFt</span><i>Street address, City, TN</i></div></div>
       <div class="lcard"><div class="ph">Listing photo</div><div class="t"><b>$000,000</b><span>0 Beds | 0 Baths | 0,000 SqFt</span><i>Street address, City, TN</i></div></div>
+    </div>
     </div>
   </div>
 </section>
@@ -252,7 +264,9 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
     <div class="center" style="margin-top:96px">
       <h2>Browse by lifestyle</h2>
       <p class="eyebrow" style="margin-top:12px">Elevate your lifestyle, discover your Tennessee home</p>
-      <div class="life"><a href="#listings">Luxury homes</a><a href="#listings">Farms &amp; acreage</a><a href="#listings">New construction</a><a href="#listings">Waterfront</a><a href="#listings">Land &amp; lots</a><a href="#listings">Investment</a></div>
+      <!-- ===== IDX SLOT 3: LIFESTYLE LINKS =====
+         Point each tile at its iHomefinder saved-search (Market) URL, e.g. href="https://YOUR-IDX-LINK". -->
+      <div class="life" id="idx-market-links"><a href="#listings">Luxury homes</a><a href="#listings">Farms &amp; acreage</a><a href="#listings">New construction</a><a href="#listings">Waterfront</a><a href="#listings">Land &amp; lots</a><a href="#listings">Investment</a></div>
     </div>
   </div>
 </section>
@@ -281,6 +295,9 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
     <div><h3>Tiana Winter</h3><p>REALTOR&reg;<br>The Winter Haven Group<br>License ID: add license number</p></div>
     <div><h3>Contact</h3><p>Cell: <a href="tel:+18652972451">865-297-2451</a><br>Office: <a href="tel:+18655883232">865-588-3232</a><br><a href="mailto:Tianashomesolutions@gmail.com">Tianashomesolutions@gmail.com</a><br>124 Winston Rd, Knoxville, TN 37919</p></div>
     <div><h3>Brokerage</h3><img src="images/rea-logo.png" alt="Realty Executives Associates"></div>
+    <!-- ===== IDX SLOT 4: MLS / IDX DISCLAIMER =====
+         Paste the disclaimer text and MLS logo required by your MLS and iHomefinder inside <div id="idx-disclaimer"> below. -->
+    <div id="idx-disclaimer" class="legal"><p>IDX disclaimer, MLS name and logo, and listing-broker attribution go here once your feed is approved.</p></div>
     <p class="legal">&copy; 2026 Tiana Winter | The Winter Haven Group. Brokered by Realty Executives Associates. Add Equal Housing Opportunity statement, privacy policy, terms, and IDX disclaimer here once your listing feed is connected.</p>
   </div>
 </footer>
