@@ -34,14 +34,18 @@ h2{font-size:clamp(30px,4.6vw,52px)}
 .frame::after{content:"";position:absolute;inset:16px -16px -16px 16px;border:1px solid var(--taupe);pointer-events:none}
 .frame img{width:100%;position:relative;z-index:1}
 /* header */
-header{position:absolute;inset:0 0 auto;z-index:10;padding:22px 0;color:var(--white)}
+header{position:fixed;inset:0 0 auto;z-index:50;padding:18px 0;color:var(--white);transition:background .3s,padding .3s,box-shadow .3s}
+header.solid{background:rgba(44,61,66,.96);padding:10px 0;box-shadow:0 1px 0 rgba(255,255,255,.12);backdrop-filter:blur(6px)}
 header .wrap{display:flex;align-items:center;gap:40px;max-width:1360px}
-.logo{font:400 22px var(--head);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;line-height:1.2}
+.logo{font:400 22px var(--head);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;line-height:1.2;white-space:nowrap}
 .logo small{display:block;font:300 10px var(--body);letter-spacing:.4em}
-nav{display:flex;gap:30px;flex:1;font:400 13px var(--body);letter-spacing:.2em;text-transform:uppercase}
-nav a{text-decoration:none;padding-bottom:6px;border-bottom:2px solid transparent}
-nav a:hover,nav a:first-child{border-color:var(--taupe)}
-.hdr-r{font:300 13px var(--body);letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+nav{display:flex;gap:28px;flex:1;font:400 12px var(--body);letter-spacing:.2em;text-transform:uppercase}
+nav a{text-decoration:none;padding-bottom:5px;border-bottom:2px solid transparent;opacity:.85}
+nav a:hover,nav a.on{border-color:var(--taupe);opacity:1}
+.hdr-r{font:400 12px var(--body);letter-spacing:.2em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,.6);padding:9px 20px;white-space:nowrap}
+.hdr-r:hover{background:var(--taupe);border-color:var(--taupe)}
+.menu-btn{display:none;margin-left:auto;background:none;border:1px solid rgba(255,255,255,.6);color:var(--white);padding:8px 14px;font:400 12px var(--body);letter-spacing:.2em;text-transform:uppercase;cursor:pointer}
+section[id],div[id]{scroll-margin-top:64px}
 /* hero */
 .hero{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;color:var(--white);background:#1c282b url(images/house.jpg) center/cover;padding:140px 0 100px}
 .hero::before{content:"";position:absolute;inset:0;background:rgba(20,28,31,.62)}
@@ -114,15 +118,16 @@ footer .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr
 footer h3{font-size:18px;color:var(--white);margin-bottom:14px}
 footer img{height:56px;width:auto;background:var(--white);padding:6px}
 .legal{grid-column:1/-1;border-top:1px solid #34444a;padding-top:24px;font-size:12px;line-height:1.7}
-@media(max-width:860px){section{padding:64px 0}.split,.split.rev{grid-template-columns:1fr;gap:56px}nav,.hdr-r{display:none}.row{grid-template-columns:1fr}.search{flex-direction:column}.search button{padding:16px}}
+@media(max-width:860px){section{padding:64px 0}.split,.split.rev{grid-template-columns:1fr;gap:56px}.menu-btn{display:block}nav,.hdr-r{display:none}header.open{background:var(--deep)}header.open .wrap{flex-wrap:wrap;gap:0}header.open nav{display:flex;flex-direction:column;flex:0 0 100%;gap:0;padding:16px 0 8px;order:3}header.open nav a{padding:14px 0;border-bottom:1px solid rgba(255,255,255,.14)}header.open .hdr-r{display:inline-block;order:4;margin:16px 0 8px;text-align:center;flex:0 0 100%}.row{grid-template-columns:1fr}.search{flex-direction:column}.search button{padding:16px}}
 </style>
 </head>
 <body>
-<header>
+<header id="hdr">
   <div class="wrap">
     <a class="logo" href="#top">Tiana Winter<small>The Winter Haven Group</small></a>
-    <nav aria-label="Main">
-      <a href="#top">Home</a><a href="#listings">Search</a><a href="#services">Buy</a><a href="#sell">Sell</a><a href="#explore">Explore</a><a href="#about">About</a><a href="#reviews">Reviews</a>
+    <button class="menu-btn" aria-expanded="false" aria-controls="mainnav">Menu</button>
+    <nav id="mainnav" aria-label="Main">
+      <a href="#top">Home</a><a href="#services">Buy</a><a href="#sell">Sell</a><a href="#listings">Listings</a><a href="#explore">Explore</a><a href="#about">About</a><a href="#reviews">Reviews</a>
     </nav>
     <a class="hdr-r" href="#contact">Contact</a>
   </div>
@@ -279,5 +284,15 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
     <p class="legal">&copy; 2026 Tiana Winter | The Winter Haven Group. Brokered by Realty Executives Associates. Add Equal Housing Opportunity statement, privacy policy, terms, and IDX disclaimer here once your listing feed is connected.</p>
   </div>
 </footer>
+<script>
+(function(){var h=document.getElementById('hdr'),b=h.querySelector('.menu-btn'),links=[].slice.call(h.querySelectorAll('nav a'));
+function f(){h.classList.toggle('solid',window.scrollY>40||h.classList.contains('open'))}
+f();addEventListener('scroll',f,{passive:true});
+b.addEventListener('click',function(){var o=h.classList.toggle('open');b.setAttribute('aria-expanded',o);b.textContent=o?'Close':'Menu';f()});
+links.forEach(function(a){a.addEventListener('click',function(){h.classList.remove('open');b.setAttribute('aria-expanded',false);b.textContent='Menu';f()})});
+if('IntersectionObserver' in window){var m={};links.forEach(function(a){m[a.getAttribute('href').slice(1)]=a});
+var io=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){links.forEach(function(a){a.classList.remove('on')});var a=m[x.target.id];if(a)a.classList.add('on')}})},{rootMargin:'-45% 0px -50% 0px'});
+Object.keys(m).forEach(function(k){var el=k==='top'?document.querySelector('.hero'):document.getElementById(k);if(el)io.observe(el)})}})();
+</script>
 </body>
 </html>
