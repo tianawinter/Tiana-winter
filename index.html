@@ -145,6 +145,21 @@ section[id],div[id]{scroll-margin-top:64px}
 .proof-f{font-size:13px;line-height:1.5;color:#c9d2d3}
 @media(max-width:860px){.expo-visual{padding-bottom:0}.proof{position:relative;left:auto;right:auto;margin:-60px 14px 0}.proof-n{gap:8px}}
 @media(prefers-reduced-motion:reduce){.proof-b i{transition:none}.js .proof:not(.in) .proof-b i{transform:none}}
+/* areas */
+.areas{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin-top:52px;text-align:left}
+.area{position:relative;display:block;aspect-ratio:4/5;overflow:hidden;text-decoration:none;color:var(--white);background:var(--deep)}
+.area-img{position:absolute;inset:0;background-size:cover;background-position:center;transition:transform 1.1s cubic-bezier(.2,.7,.2,1)}
+.area::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(transparent 40%,rgba(20,28,31,.78))}
+.area::after{content:"";position:absolute;inset:14px;z-index:2;border:1px solid rgba(255,255,255,.55);transition:inset .5s cubic-bezier(.2,.7,.2,1),border-color .3s;pointer-events:none}
+.area:hover .area-img,.area:focus-visible .area-img{transform:scale(1.05)}
+.area:hover::after,.area:focus-visible::after{inset:20px;border-color:var(--white)}
+.area-t{position:absolute;z-index:3;left:0;right:0;bottom:0;padding:34px 32px}
+.area-t h3{font-size:clamp(24px,2.4vw,30px);color:var(--white)}
+.area-t p{margin-top:6px;font:300 13px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--sage)}
+.area-t span{display:inline-block;margin-top:14px;font:400 12px var(--body);letter-spacing:.24em;text-transform:uppercase;border-bottom:1px solid var(--taupe);padding-bottom:3px}
+@media(max-width:980px){.areas{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.areas{grid-template-columns:1fr;gap:20px}.area{aspect-ratio:4/3.4}}
+@media(prefers-reduced-motion:reduce){.area-img,.area::after{transition:none}}
 /* about */
 .badge{width:120px;height:120px;margin-top:-60px;margin-left:auto;position:relative;z-index:2;color:var(--ink)}
 .badge text{font:400 11px var(--body);letter-spacing:.3em;fill:currentColor;text-transform:uppercase}
@@ -364,9 +379,18 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
 
 <section id="explore">
   <div class="wrap center">
-    <h2>Featured locations</h2>
-    <div class="locs" tabindex="0" aria-label="Featured locations, scroll sideways">
-      <div class="loc"><span>Area name</span></div><div class="loc"><span>Area name</span></div><div class="loc"><span>Area name</span></div><div class="loc"><span>Area name</span></div>
+    <p class="eyebrow">Find your part of town</p>
+    <h2>Explore Knoxville &amp; beyond</h2>
+    <!-- ===== AREA PHOTOS =====
+         Drop a hero photo for each area into images/areas/ using the file name shown in each card's data-photo
+         (e.g. images/areas/downtown-knoxville.jpg). Until then, the card shows a colour placeholder. -->
+    <div class="areas">
+      <a class="area" href="get-started.html?intent=explore&amp;area=Downtown+Knoxville"><div class="area-img" style="background-image:linear-gradient(160deg,#4d6d75,#2c3d42)" data-photo="images/areas/downtown-knoxville.jpg"></div><div class="area-t"><h3>Downtown Knoxville</h3><span>Explore this area</span></div></a>
+      <a class="area" href="get-started.html?intent=explore&amp;area=South+Knoxville"><div class="area-img" style="background-image:linear-gradient(160deg,#a38f7c,#4d6d75)" data-photo="images/areas/south-knoxville.jpg"></div><div class="area-t"><h3>South Knoxville</h3><span>Explore this area</span></div></a>
+      <a class="area" href="get-started.html?intent=explore&amp;area=Maryville"><div class="area-img" style="background-image:linear-gradient(160deg,#b5c1c0,#4d6d75)" data-photo="images/areas/maryville.jpg"></div><div class="area-t"><h3>Maryville</h3><span>Explore this area</span></div></a>
+      <a class="area" href="get-started.html?intent=explore&amp;area=Sevierville"><div class="area-img" style="background-image:linear-gradient(160deg,#4d6d75,#a38f7c)" data-photo="images/areas/sevierville.jpg"></div><div class="area-t"><h3>Sevierville</h3><span>Explore this area</span></div></a>
+      <a class="area" href="get-started.html?intent=explore&amp;area=Blount+County"><div class="area-img" style="background-image:linear-gradient(160deg,#2c3d42,#b5c1c0)" data-photo="images/areas/blount-county.jpg"></div><div class="area-t"><h3>Blount County</h3><span>Explore this area</span></div></a>
+      <a class="area" href="get-started.html?intent=explore&amp;area=West+Knoxville"><div class="area-img" style="background-image:linear-gradient(160deg,#b5c1c0,#a38f7c)" data-photo="images/areas/west-knoxville.jpg"></div><div class="area-t"><h3>West Knoxville</h3><p>Farragut &middot; Hardin Valley &middot; Oak Ridge</p><span>Explore this area</span></div></a>
     </div>
   </div>
 </section>
@@ -508,9 +532,9 @@ if(!rm&&y<innerHeight*1.3){hero.style.setProperty('--hy',(y*0.18).toFixed(1)+'px
 var f=Math.max(0,1-y/(innerHeight*0.8));hw.style.opacity=f;hw.style.transform='translate3d(0,'+(y*0.1).toFixed(1)+'px,0)'}}
 addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});upd();
 if(rm||!('IntersectionObserver' in window)){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});return}
-var sel='main section:not(.hero) .eyebrow, main section:not(.hero) h2, main section:not(.hero) .split p, .intro p, .frame, .phone, .monitor, .card, .pillar, .lcard, .loc, .q, .rcard, .life a, .sell .box, .awards, form:not(.search)';
+var sel='main section:not(.hero) .eyebrow, main section:not(.hero) h2, main section:not(.hero) .split p, .intro p, .frame, .phone, .monitor, .card, .pillar, .lcard, .loc, .q, .rcard, .area, .life a, .sell .box, .awards, form:not(.search)';
 var els=document.querySelectorAll(sel);
-els.forEach(function(e){e.classList.add('rv');var sibs=e.parentElement?[].slice.call(e.parentElement.children).filter(function(c){return c.classList.contains('rv')||c.matches(sel)}):[];var i=Math.min(sibs.indexOf(e),4);if(e.matches('.card,.pillar,.lcard,.loc,.q,.life a')&&i>0)e.style.setProperty('--d',(i*0.12)+'s')});
+els.forEach(function(e){e.classList.add('rv');var sibs=e.parentElement?[].slice.call(e.parentElement.children).filter(function(c){return c.classList.contains('rv')||c.matches(sel)}):[];var i=Math.min(sibs.indexOf(e),4);if(e.matches('.card,.pillar,.lcard,.loc,.q,.area,.life a')&&i>0)e.style.setProperty('--d',(i*0.12)+'s')});
 var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -10% 0px',threshold:0.08});
 els.forEach(function(e){io.observe(e)});
 })();

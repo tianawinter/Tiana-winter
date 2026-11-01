@@ -278,6 +278,7 @@ fieldset{border:0;padding:0;min-width:0}
           <form name="get-started" id="gs" method="POST" action="get-started.html?sent=1" data-netlify="true" netlify-honeypot="bot-field" novalidate>
             <input type="hidden" name="form-name" value="get-started">
             <input type="hidden" name="summary" id="summary">
+            <input type="hidden" name="area_interest" id="area_interest">
             <p hidden><label>Leave blank <input name="bot-field"></label></p>
 <fieldset class="step" data-flow="all" data-first="1"><legend class="sr">What brings you here</legend><div class="q"><h3>What brings you here today?</h3><div class="bubbles big">
 <label class="bub"><input type="radio" name="intent" value="Buy" required><span>I want to buy a home</span></label>
@@ -362,7 +363,7 @@ show(idx+1)});
 backB.addEventListener('click',function(){show(idx-1)});
 form.addEventListener('change',function(e){if(e.target.name==='intent'){intent=e.target.value;build();setTimeout(function(){if(valid())show(1)},220)}});
 form.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName!=='TEXTAREA'){e.preventDefault();nextB.click()}});
-var p=new URLSearchParams(location.search),q=(p.get('intent')||'').toLowerCase();
+var p=new URLSearchParams(location.search);if(p.get('area'))document.getElementById('area_interest').value=p.get('area').slice(0,80);var q=(p.get('intent')||'').toLowerCase();
 if(p.get('sent')){finish();return}
 intent=null;build();
 var map={buy:'Buy',sell:'Sell',invest:'Invest',explore:'Explore'};
