@@ -1,12 +1,283 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Tiana Winter | The Winter Haven Group</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tiana Winter | The Winter Haven Group | Knoxville, TN Real Estate</title>
+<meta name="description" content="Tiana Winter and The Winter Haven Group help buyers and sellers across Knoxville, Tennessee. Realty Executives Associates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Jost:wght@300;400&family=Playfair+Display:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#2c3d42;--slate:#4d6d75;--sage:#b5c1c0;--cream:#fffbf3;--ink:#3f3d3b;--taupe:#a38f7c;--white:#fff;
+--head:'Italiana','Cormorant Garamond',Georgia,serif;--body:'Jost','Helvetica Neue',Arial,sans-serif;--ital:'Playfair Display',Georgia,serif}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font:300 17px/1.75 var(--body);color:var(--ink);background:var(--white)}
+img{display:block;max-width:100%}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--taupe);outline-offset:3px}
+.wrap{max-width:1180px;margin:0 auto;padding:0 28px}
+section{padding:96px 0}
+h1,h2,h3{font-family:var(--head);font-weight:400;text-transform:uppercase;letter-spacing:.06em;line-height:1.15}
+h1{font-size:clamp(38px,7vw,84px)}
+h2{font-size:clamp(30px,4.6vw,52px)}
+.eyebrow{font:400 14px var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--taupe);margin-bottom:16px}
+.center{text-align:center}
+.btn{display:inline-block;padding:14px 34px;border:1px solid var(--taupe);color:var(--taupe);font:400 13px var(--body);letter-spacing:.24em;text-transform:uppercase;text-decoration:none;background:transparent;cursor:pointer;transition:.2s}
+.btn:hover{background:var(--taupe);color:var(--white)}
+.btn.fill{background:var(--taupe);color:var(--white)}
+.btn.fill:hover{background:var(--white);color:var(--ink)}
+.dark{background:var(--deep);color:var(--white)}
+.dark h2,.dark h3{color:var(--white)}
+.frame{position:relative}
+.frame::after{content:"";position:absolute;inset:16px -16px -16px 16px;border:1px solid var(--taupe);pointer-events:none}
+.frame img{width:100%;position:relative;z-index:1}
+/* header */
+header{position:absolute;inset:0 0 auto;z-index:10;padding:22px 0;color:var(--white)}
+header .wrap{display:flex;align-items:center;gap:40px;max-width:1360px}
+.logo{font:400 22px var(--head);letter-spacing:.18em;text-transform:uppercase;text-decoration:none;line-height:1.2}
+.logo small{display:block;font:300 10px var(--body);letter-spacing:.4em}
+nav{display:flex;gap:30px;flex:1;font:400 13px var(--body);letter-spacing:.2em;text-transform:uppercase}
+nav a{text-decoration:none;padding-bottom:6px;border-bottom:2px solid transparent}
+nav a:hover,nav a:first-child{border-color:var(--taupe)}
+.hdr-r{font:300 13px var(--body);letter-spacing:.2em;text-transform:uppercase;text-decoration:none}
+/* hero */
+.hero{position:relative;min-height:100vh;display:grid;place-items:center;text-align:center;color:var(--white);background:#1c282b url(images/house.jpg) center/cover;padding:140px 0 100px}
+.hero::before{content:"";position:absolute;inset:0;background:rgba(20,28,31,.62)}
+.hero .wrap{position:relative;width:100%}
+.hero .eyebrow{font-size:clamp(13px,2vw,18px)}
+.search{display:flex;max-width:760px;margin:44px auto 0}
+.search input{flex:1;padding:16px 18px;border:0;font:300 16px var(--body);min-width:0}
+.search button{padding:0 32px;border:0;background:var(--taupe);color:var(--white);font:400 13px var(--body);letter-spacing:.24em;text-transform:uppercase;cursor:pointer}
+/* intro */
+.hero-photo{padding:80px 0 0}
+.hero-photo img{aspect-ratio:16/8;object-fit:cover;object-position:center 30%}
+.intro{padding-bottom:40px}
+.intro p{max-width:760px;margin:24px auto 0}
+.split{display:grid;grid-template-columns:1.1fr 1fr;gap:80px;align-items:center}
+.split.rev{grid-template-columns:1fr 1.1fr}
+.split p{margin:18px 0 28px}
+.split img{aspect-ratio:5/4;object-fit:cover}
+/* pillars */
+.pillars{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:28px;margin-top:56px}
+.pillar{position:relative;overflow:hidden}
+.pillar img{aspect-ratio:3/4;object-fit:cover;object-position:center 20%;width:100%;filter:brightness(.7)}
+.pillar div{position:absolute;inset:16px;border:1px solid rgba(255,255,255,.7);display:flex;flex-direction:column;justify-content:flex-end;align-items:center;text-align:center;padding:28px 20px}
+.pillar h3{font-size:28px}
+.pillar a{margin-top:14px;font:400 12px var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--white)}
+/* listings */
+.black{background:#171f21;color:var(--white)}
+.lgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:0;margin-top:56px}
+.lcard{background:#0f1517;border:1px solid #222d30}
+.ph{aspect-ratio:4/3;background:linear-gradient(135deg,#3b5058,#26363b);display:grid;place-items:center;font:400 13px var(--body);letter-spacing:.24em;text-transform:uppercase;color:var(--sage)}
+.lcard div.t{padding:24px 26px 30px}
+.lcard b{display:block;font:400 26px var(--head);letter-spacing:.08em}
+.lcard span{display:block;font-size:13px;letter-spacing:.18em;text-transform:uppercase;margin-top:4px}
+.lcard i{display:block;font-style:normal;font-size:14px;color:var(--sage);margin-top:4px}
+/* locations */
+.locs{display:flex;gap:24px;overflow-x:auto;padding:48px 0 16px;scroll-snap-type:x mandatory}
+.loc{flex:0 0 min(300px,78%);aspect-ratio:3/4;scroll-snap-align:start;position:relative;background:linear-gradient(160deg,var(--sage),var(--slate))}
+.loc span{position:absolute;inset:auto 0 0;padding:20px;background:linear-gradient(transparent,rgba(0,0,0,.55));color:var(--white);font:300 15px var(--body);letter-spacing:.22em;text-transform:uppercase}
+/* quotes */
+.quotes blockquote{max-width:820px;margin:32px auto 0;font:italic 22px/1.7 var(--ital)}
+.stars{color:var(--taupe);letter-spacing:.4em;font-size:20px}
+.quotes cite{display:block;margin-top:20px;font:400 13px var(--body);letter-spacing:.24em;text-transform:uppercase;font-style:normal;color:var(--sage)}
+/* about */
+.badge{width:120px;height:120px;margin-top:-60px;margin-left:auto;position:relative;z-index:2;color:var(--ink)}
+.badge text{font:400 11px var(--body);letter-spacing:.3em;fill:currentColor;text-transform:uppercase}
+.awards{display:flex;gap:28px;align-items:center;margin-top:28px;flex-wrap:wrap}
+.awards img{height:120px;width:auto}
+.soc{display:flex;gap:12px;margin-top:24px}
+.soc a{width:44px;height:44px;border-radius:50%;background:var(--taupe);color:var(--white);display:grid;place-items:center;text-decoration:none;font:400 12px var(--body)}
+/* sell banner */
+.sell{position:relative;text-align:center;color:var(--white);background:#1c282b url(images/laptop.jpg) center 40%/cover;padding:110px 0}
+.sell::before{content:"";position:absolute;inset:0;background:rgba(20,28,31,.7)}
+.sell .wrap{position:relative}
+.sell .box{border:1px solid rgba(255,255,255,.6);padding:72px 28px}
+.sell p{max-width:520px;margin:20px auto 32px}
+/* lifestyle */
+.cream{background:var(--cream)}
+.life{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px;margin-top:48px}
+.life a{aspect-ratio:1;display:grid;place-items:center;text-align:center;padding:16px;background:var(--slate);color:var(--white);font:400 20px var(--head);letter-spacing:.1em;text-transform:uppercase;text-decoration:none}
+.life a:nth-child(even){background:var(--sage);color:var(--ink)}
+/* form */
+form{display:grid;gap:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+input,textarea{width:100%;padding:14px 16px;border:1px solid #5d7479;background:transparent;color:var(--white);font:300 16px var(--body)}
+input::placeholder,textarea::placeholder{color:#b8c3c4}
+.check{display:flex;gap:12px;font-size:13px;line-height:1.5;color:#c9d2d3}
+.check input{width:auto;margin-top:3px}
+/* footer */
+footer{background:#171f21;color:#c9d2d3;padding:72px 0 36px;font-size:15px}
+footer .wrap{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:40px}
+footer h3{font-size:18px;color:var(--white);margin-bottom:14px}
+footer img{height:56px;width:auto;background:var(--white);padding:6px}
+.legal{grid-column:1/-1;border-top:1px solid #34444a;padding-top:24px;font-size:12px;line-height:1.7}
+@media(max-width:860px){section{padding:64px 0}.split,.split.rev{grid-template-columns:1fr;gap:56px}nav,.hdr-r{display:none}.row{grid-template-columns:1fr}.search{flex-direction:column}.search button{padding:16px}}
+</style>
 </head>
 <body>
-  <h1>Tiana Winter at The Winter Haven Group</h1>
-  <p>Our new website is coming soon.</p>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">Tiana Winter<small>The Winter Haven Group</small></a>
+    <nav aria-label="Main">
+      <a href="#top">Home</a><a href="#listings">Search</a><a href="#services">Buy</a><a href="#sell">Sell</a><a href="#explore">Explore</a><a href="#about">About</a><a href="#reviews">Reviews</a>
+    </nav>
+    <a class="hdr-r" href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+<section class="hero" aria-label="Welcome">
+  <div class="wrap">
+    <p class="eyebrow">Elevate your real estate experience with</p>
+    <h1>The Winter Haven Group</h1>
+    <form class="search" action="#listings" role="search" aria-label="Property search">
+      <input type="text" placeholder="City, neighborhood, address" aria-label="Search by city, neighborhood or address">
+      <button type="submit">Search</button>
+    </form>
+  </div>
+</section>
+
+<section class="hero-photo">
+  <div class="wrap frame"><img src="images/seated.jpg" alt="Tiana Winter seated against a white wall" loading="lazy"></div>
+</section>
+
+<section class="intro center">
+  <div class="wrap">
+    <p class="eyebrow">Knoxville real estate experts</p>
+    <h2>Your home matters</h2>
+    <p>I believe in going above and beyond to provide top tier service and an exceptional client experience. With 8 years in real estate and more than 20 years in sales and marketing, I'm a fierce negotiator, a driven hunter, and a creative strategist. My motto: committed service, creative solutions, dynamic results.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap split">
+    <div class="frame"><img src="images/laptop.jpg" alt="Tiana Winter working at a kitchen island" loading="lazy"></div>
+    <div>
+      <h2>Meet the team</h2>
+      <p>Providing every client with the best possible service and experience is our top priority.</p>
+      <a class="btn" href="#about">The Winter Haven Group</a>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="services">
+  <div class="wrap center">
+    <h2>Simplifying real estate,</h2>
+    <p class="eyebrow" style="margin-top:12px">One home at a time</p>
+    <div class="pillars">
+      <article class="pillar"><img src="images/door.jpg" alt="" loading="lazy"><div><h3>Buy</h3><a href="#contact">Start your search</a></div></article>
+      <article class="pillar" id="sell"><img src="images/stairs.jpg" alt="" loading="lazy"><div><h3>Sell</h3><a href="#value">Get your home value</a></div></article>
+      <article class="pillar"><img src="images/yellow.jpg" alt="" loading="lazy"><div><h3>Explore</h3><a href="#explore">Browse areas</a></div></article>
+    </div>
+  </div>
+</section>
+
+<section class="black" id="listings">
+  <div class="wrap center">
+    <h2>Featured listings</h2>
+    <p style="margin-top:12px;color:var(--sage)">Listings appear here once your MLS/IDX feed is connected.</p>
+    <div class="lgrid" style="text-align:left">
+      <div class="lcard"><div class="ph">Listing photo</div><div class="t"><b>$000,000</b><span>0 Beds | 0 Baths | 0,000 SqFt</span><i>Street address, City, TN</i></div></div>
+      <div class="lcard"><div class="ph">Listing photo</div><div class="t"><b>$000,000</b><span>0 Beds | 0 Baths | 0,000 SqFt</span><i>Street address, City, TN</i></div></div>
+      <div class="lcard"><div class="ph">Listing photo</div><div class="t"><b>$000,000</b><span>0 Beds | 0 Baths | 0,000 SqFt</span><i>Street address, City, TN</i></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="explore">
+  <div class="wrap center">
+    <h2>Featured locations</h2>
+    <div class="locs" tabindex="0" aria-label="Featured locations, scroll sideways">
+      <div class="loc"><span>Area name</span></div><div class="loc"><span>Area name</span></div><div class="loc"><span>Area name</span></div><div class="loc"><span>Area name</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark quotes center" id="reviews">
+  <div class="wrap">
+    <h2>What our clients say</h2>
+    <p class="stars" aria-label="Five stars">&#9733;&#9733;&#9733;&#9733;&#9733;</p>
+    <blockquote>Add a client review here once you have written permission to publish it.</blockquote>
+    <cite>Client name</cite>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap split rev">
+    <div>
+      <p class="eyebrow">A true expert</p>
+      <h2>Meet Tiana</h2>
+      <p>I'm so excited to meet you and be invited into your life through real estate. I bring 8 years of real estate experience and consistent 5-star reviews. Let's make your real estate goals a reality.</p>
+      <a class="btn" href="#contact">Meet Tiana</a>
+      <div class="awards">
+        <img src="images/award.jpg" alt="2024 Top Producer, Diamond Winner, Realty Executives Associates">
+        <img src="images/rea-logo.png" alt="Realty Executives Associates">
+      </div>
+      <div class="soc"><a href="#" aria-label="Instagram">IG</a><a href="#" aria-label="Facebook">FB</a><a href="#" aria-label="YouTube">YT</a></div>
+    </div>
+    <div>
+      <div class="frame"><img src="images/arch.jpg" alt="Portrait of Tiana Winter in an arched doorway" loading="lazy" style="aspect-ratio:4/5"></div>
+      <svg class="badge" viewBox="0 0 120 120" aria-hidden="true"><defs><path id="c" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs><text><textPath href="#c">The Winter Haven Group &#8226; Knoxville &#8226;</textPath></text><text x="60" y="68" text-anchor="middle" style="font:400 26px var(--head);letter-spacing:0">TW</text></svg>
+    </div>
+  </div>
+</section>
+
+<section class="sell" id="value">
+  <div class="wrap"><div class="box">
+    <h2>Do you have a home to sell?</h2>
+    <p>Get an accurate home evaluation to find out what your home is really worth in this market.</p>
+    <a class="btn" href="#contact" style="color:var(--white);border-color:var(--white)">Get my value</a>
+  </div></div>
+</section>
+
+<section class="cream">
+  <div class="wrap">
+    <div class="split">
+      <div>
+        <p class="eyebrow">Ordinary to extraordinary</p>
+        <h2>Staging, video &amp; more</h2>
+        <p>Strategic staging helps buyers picture themselves in the home. Every listing also gets professional photography, video, drone photos, and floor plans, so your home is presented at its highest potential.</p>
+        <a class="btn" href="#contact">Get the most for your home</a>
+      </div>
+      <div class="frame"><img src="images/yellow.jpg" alt="" loading="lazy" style="aspect-ratio:5/4;object-position:center 30%"></div>
+    </div>
+    <div class="center" style="margin-top:96px">
+      <h2>Browse by lifestyle</h2>
+      <p class="eyebrow" style="margin-top:12px">Elevate your lifestyle, discover your Tennessee home</p>
+      <div class="life"><a href="#listings">Luxury homes</a><a href="#listings">Farms &amp; acreage</a><a href="#listings">New construction</a><a href="#listings">Waterfront</a><a href="#listings">Land &amp; lots</a><a href="#listings">Investment</a></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark" id="contact">
+  <div class="wrap split">
+    <div>
+      <h2>Get more information</h2>
+      <p>Tell us a little about what you're looking for and Tiana will be in touch.</p>
+    </div>
+    <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="#contact">
+      <input type="hidden" name="form-name" value="contact">
+      <p hidden><label>Leave blank <input name="bot-field"></label></p>
+      <div class="row"><input name="name" placeholder="Name" required autocomplete="name" aria-label="Name"><input type="tel" name="phone" placeholder="Phone" autocomplete="tel" aria-label="Phone"></div>
+      <input type="email" name="email" placeholder="Email" required autocomplete="email" aria-label="Email">
+      <textarea name="message" rows="4" placeholder="Message" aria-label="Message"></textarea>
+      <label class="check"><input type="checkbox" name="consent" required>I agree to be contacted by Tiana Winter about real estate services and my inquiry. Message and data rates may apply.</label>
+      <button class="btn fill" type="submit">Submit</button>
+    </form>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div><h3>Tiana Winter</h3><p>REALTOR&reg;<br>The Winter Haven Group<br>License ID: add license number</p></div>
+    <div><h3>Contact</h3><p>Cell: <a href="tel:+18652972451">865-297-2451</a><br>Office: <a href="tel:+18655883232">865-588-3232</a><br><a href="mailto:Tianashomesolutions@gmail.com">Tianashomesolutions@gmail.com</a><br>124 Winston Rd, Knoxville, TN 37919</p></div>
+    <div><h3>Brokerage</h3><img src="images/rea-logo.png" alt="Realty Executives Associates"></div>
+    <p class="legal">&copy; 2026 Tiana Winter | The Winter Haven Group. Brokered by Realty Executives Associates. Add Equal Housing Opportunity statement, privacy policy, terms, and IDX disclaimer here once your listing feed is connected.</p>
+  </div>
+</footer>
 </body>
 </html>
