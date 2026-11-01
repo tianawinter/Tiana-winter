@@ -158,6 +158,24 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
 .js .phone.rv.in{transform:none}
 @media(max-width:860px){.pfig:nth-child(2){margin-top:0}.phones{gap:48px}}
 @media (prefers-reduced-motion:reduce){.pfig{transform:none}.js .phone.rv{transform:none;transition:none;opacity:1}}
+/* ===== monitor tour ===== */
+.tour{background:linear-gradient(180deg,#171f21,#232f33);color:var(--white);text-align:center;overflow:hidden}
+.tour p.lead{max-width:620px;margin:18px auto 0;color:#d5dcdd}
+.monitor{max-width:960px;margin:64px auto 0}
+.mon-body{position:relative;background:linear-gradient(160deg,#9aa0a2,#3a3f41 22%,#101314 55%,#4a5052 100%);padding:2px;border-radius:16px;box-shadow:0 50px 80px -40px rgba(0,0,0,.85),0 0 90px -20px rgba(163,143,124,.28)}
+.mon-bezel{background:#050606;border-radius:14px;padding:14px 14px 34px;position:relative}
+.mon-bezel::after{content:"";position:absolute;left:50%;bottom:13px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#2a3032}
+.mon-screen{position:relative;aspect-ratio:16/9;background:#0b0f10;border-radius:4px;overflow:hidden}
+.mon-screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mon-poster{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#0b0f10 url(images/house.jpg) center/cover;display:grid;place-items:center}
+.mon-poster::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(10,16,18,.15),rgba(10,16,18,.65));transition:opacity .4s}
+.mon-poster::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,0) 28%);pointer-events:none}
+.play{position:relative;z-index:2;width:92px;height:92px;border-radius:50%;border:1.5px solid rgba(255,255,255,.85);background:rgba(255,255,255,.12);backdrop-filter:blur(6px);display:grid;place-items:center;transition:transform .5s cubic-bezier(.34,1.45,.5,1),background .3s}
+.play svg{width:30px;height:30px;fill:#fff;margin-left:5px}
+.mon-poster:hover .play,.mon-poster:focus-visible .play{transform:scale(1.1);background:rgba(163,143,124,.55)}
+.mon-neck{width:15%;height:64px;margin:0 auto;background:linear-gradient(90deg,#2a2f31,#9aa0a2 45%,#3a3f41);clip-path:polygon(12% 0,88% 0,100% 100%,0 100%)}
+.mon-base{width:34%;height:12px;margin:0 auto;background:linear-gradient(180deg,#b4b9bb,#40474a);border-radius:3px 3px 12px 12px;box-shadow:0 22px 24px -10px rgba(0,0,0,.7)}
+@media(max-width:700px){.mon-bezel{padding:8px 8px 20px}.play{width:68px;height:68px}.play svg{width:22px;height:22px}.mon-neck{height:38px}}
 </style>
 </head>
 <body>
@@ -242,6 +260,20 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
   </div>
 </section>
 
+<section class="tour" id="tour">
+  <div class="wrap">
+    <p class="eyebrow">Home tour</p>
+    <h2>Step inside</h2>
+    <p class="lead">Press play to walk through one of our listings, with sound.</p>
+    <div class="monitor">
+      <div class="mon-body"><div class="mon-bezel"><div class="mon-screen" data-vimeo="https://vimeo.com/1223961666">
+        <button class="mon-poster" type="button" aria-label="Play the home tour video"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg></span></button>
+      </div></div></div>
+      <div class="mon-neck"></div><div class="mon-base"></div>
+    </div>
+  </div>
+</section>
+
 <section id="explore">
   <div class="wrap center">
     <h2>Featured locations</h2>
@@ -298,7 +330,7 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
          Vertical (9:16) videos fit best. In Vimeo, set each video's privacy so it can be embedded on tianawinter.com. -->
     <div class="phones">
       <figure class="pfig"><div class="phone"><i class="bt l" style="top:15%;height:5%"></i><i class="bt l" style="top:23%;height:9%"></i><i class="bt l" style="top:34%;height:9%"></i><i class="bt r" style="top:28%;height:14%"></i><div class="screen" data-vimeo="https://vimeo.com/1235472814"><div class="ph-note">Add Vimeo link<br>Listing reel</div></div><div class="island"></div><div class="status"><span>9:41</span><svg viewBox="0 0 60 24" aria-hidden="true"><rect x="0" y="15" width="4" height="7" rx="1"/><rect x="7" y="11" width="4" height="11" rx="1"/><rect x="14" y="7" width="4" height="15" rx="1"/><rect x="21" y="3" width="4" height="19" rx="1"/><path d="M33 9a12 12 0 0 1 14 0l-2 2.5a9 9 0 0 0-10 0zM36 14a7 7 0 0 1 8 0l-2 2.4a4 4 0 0 0-4 0zM38.5 19.5a2 2 0 1 1 3 0z" transform="translate(-4 0) scale(1)"/><rect x="45" y="5" width="13" height="14" rx="3.5" fill="none" stroke="#fff" stroke-width="1.8" transform="translate(-2 0)"/><rect x="47" y="7" width="8" height="10" rx="2" transform="translate(-2 0)"/></svg></div><div class="homebar"></div><div class="glare"></div></div></figure>
-      <figure class="pfig"><div class="phone"><i class="bt l" style="top:15%;height:5%"></i><i class="bt l" style="top:23%;height:9%"></i><i class="bt l" style="top:34%;height:9%"></i><i class="bt r" style="top:28%;height:14%"></i><div class="screen" data-vimeo="https://vimeo.com/1223961666"><div class="ph-note">Add Vimeo link<br>Just listed</div></div><div class="island"></div><div class="status"><span>9:41</span><svg viewBox="0 0 60 24" aria-hidden="true"><rect x="0" y="15" width="4" height="7" rx="1"/><rect x="7" y="11" width="4" height="11" rx="1"/><rect x="14" y="7" width="4" height="15" rx="1"/><rect x="21" y="3" width="4" height="19" rx="1"/><path d="M33 9a12 12 0 0 1 14 0l-2 2.5a9 9 0 0 0-10 0zM36 14a7 7 0 0 1 8 0l-2 2.4a4 4 0 0 0-4 0zM38.5 19.5a2 2 0 1 1 3 0z" transform="translate(-4 0) scale(1)"/><rect x="45" y="5" width="13" height="14" rx="3.5" fill="none" stroke="#fff" stroke-width="1.8" transform="translate(-2 0)"/><rect x="47" y="7" width="8" height="10" rx="2" transform="translate(-2 0)"/></svg></div><div class="homebar"></div><div class="glare"></div></div></figure>
+      <figure class="pfig"><div class="phone"><i class="bt l" style="top:15%;height:5%"></i><i class="bt l" style="top:23%;height:9%"></i><i class="bt l" style="top:34%;height:9%"></i><i class="bt r" style="top:28%;height:14%"></i><div class="screen" data-vimeo=""><div class="ph-note">Add Vimeo link<br>Just listed</div></div><div class="island"></div><div class="status"><span>9:41</span><svg viewBox="0 0 60 24" aria-hidden="true"><rect x="0" y="15" width="4" height="7" rx="1"/><rect x="7" y="11" width="4" height="11" rx="1"/><rect x="14" y="7" width="4" height="15" rx="1"/><rect x="21" y="3" width="4" height="19" rx="1"/><path d="M33 9a12 12 0 0 1 14 0l-2 2.5a9 9 0 0 0-10 0zM36 14a7 7 0 0 1 8 0l-2 2.4a4 4 0 0 0-4 0zM38.5 19.5a2 2 0 1 1 3 0z" transform="translate(-4 0) scale(1)"/><rect x="45" y="5" width="13" height="14" rx="3.5" fill="none" stroke="#fff" stroke-width="1.8" transform="translate(-2 0)"/><rect x="47" y="7" width="8" height="10" rx="2" transform="translate(-2 0)"/></svg></div><div class="homebar"></div><div class="glare"></div></div></figure>
       <figure class="pfig"><div class="phone"><i class="bt l" style="top:15%;height:5%"></i><i class="bt l" style="top:23%;height:9%"></i><i class="bt l" style="top:34%;height:9%"></i><i class="bt r" style="top:28%;height:14%"></i><div class="screen" data-vimeo=""><div class="ph-note">Add Vimeo link<br>Open house</div></div><div class="island"></div><div class="status"><span>9:41</span><svg viewBox="0 0 60 24" aria-hidden="true"><rect x="0" y="15" width="4" height="7" rx="1"/><rect x="7" y="11" width="4" height="11" rx="1"/><rect x="14" y="7" width="4" height="15" rx="1"/><rect x="21" y="3" width="4" height="19" rx="1"/><path d="M33 9a12 12 0 0 1 14 0l-2 2.5a9 9 0 0 0-10 0zM36 14a7 7 0 0 1 8 0l-2 2.4a4 4 0 0 0-4 0zM38.5 19.5a2 2 0 1 1 3 0z" transform="translate(-4 0) scale(1)"/><rect x="45" y="5" width="13" height="14" rx="3.5" fill="none" stroke="#fff" stroke-width="1.8" transform="translate(-2 0)"/><rect x="47" y="7" width="8" height="10" rx="2" transform="translate(-2 0)"/></svg></div><div class="homebar"></div><div class="glare"></div></div></figure>
     </div>
   </div>
@@ -376,7 +408,7 @@ if(!rm&&y<innerHeight*1.3){hero.style.setProperty('--hy',(y*0.18).toFixed(1)+'px
 var f=Math.max(0,1-y/(innerHeight*0.8));hw.style.opacity=f;hw.style.transform='translate3d(0,'+(y*0.1).toFixed(1)+'px,0)'}}
 addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});upd();
 if(rm||!('IntersectionObserver' in window)){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});return}
-var sel='main section:not(.hero) .eyebrow, main section:not(.hero) h2, main section:not(.hero) .split p, .intro p, .frame, .phone, .card, .pillar, .lcard, .loc, .q, .life a, .sell .box, .awards, form:not(.search)';
+var sel='main section:not(.hero) .eyebrow, main section:not(.hero) h2, main section:not(.hero) .split p, .intro p, .frame, .phone, .monitor, .card, .pillar, .lcard, .loc, .q, .life a, .sell .box, .awards, form:not(.search)';
 var els=document.querySelectorAll(sel);
 els.forEach(function(e){e.classList.add('rv');var sibs=e.parentElement?[].slice.call(e.parentElement.children).filter(function(c){return c.classList.contains('rv')||c.matches(sel)}):[];var i=Math.min(sibs.indexOf(e),4);if(e.matches('.card,.pillar,.lcard,.loc,.q,.life a')&&i>0)e.style.setProperty('--d',(i*0.12)+'s')});
 var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -10% 0px',threshold:0.08});
@@ -407,6 +439,15 @@ function f(){tick=false;var r=sec.getBoundingClientRect();if(r.bottom<-200||r.to
 var p=Math.max(-1,Math.min(1,(r.top+r.height/2-innerHeight/2)/innerHeight));
 figs.forEach(function(e,i){e.style.setProperty('--fy',(p*(depth[i]||-40)).toFixed(1))})}
 addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(f)}},{passive:true});addEventListener('resize',f);f();
+})();
+</script>
+<script>
+(function(){
+var scr=document.querySelector('.mon-screen'),btn=scr&&scr.querySelector('.mon-poster');if(!btn)return;
+var m=(scr.dataset.vimeo||'').match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([a-z0-9]+))?/i);if(!m)return;
+btn.addEventListener('click',function(){var f=document.createElement('iframe');
+f.src='https://player.vimeo.com/video/'+m[1]+'?'+(m[2]?'h='+m[2]+'&':'')+'autoplay=1&title=0&byline=0&portrait=0&dnt=1';
+f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title='Home tour video';scr.innerHTML='';scr.appendChild(f)});
 })();
 </script>
 </body>
