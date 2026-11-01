@@ -346,7 +346,7 @@ nextB.addEventListener('click',function(){
 if(!valid())return;
 if(idx===list.length-1){document.getElementById('summary').value=sum();nextB.disabled=true;nextB.textContent='Sending…';
 var body=new URLSearchParams(new FormData(form)).toString();
-fetch('/',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(r){if(!r.ok)throw 0;finish()}).catch(function(){nextB.disabled=false;nextB.textContent='Send to Tiana';err.textContent='Something went wrong. Please try again, or call 865-297-2451.'});return}
+fetch('/get-started.html',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:body}).then(function(r){if(!r.ok)throw r.status;finish()}).catch(function(c){console.warn('AJAX submit failed',c);form.submit()});return}
 show(idx+1)});
 backB.addEventListener('click',function(){show(idx-1)});
 form.addEventListener('change',function(e){if(e.target.name==='intent'){intent=e.target.value;build();setTimeout(function(){if(valid())show(1)},220)}});
