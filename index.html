@@ -187,6 +187,7 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
 .reach b{display:block;font:400 18px var(--head);letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:4px}
 @media(max-width:860px){.social .social-split{grid-template-columns:1fr;gap:56px;justify-items:center}.social .social-text{width:100%}}
 </style>
+<link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
 </head>
 <body>
 <script>document.documentElement.classList.add("js")</script>
@@ -197,7 +198,7 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
     <nav id="mainnav" aria-label="Main">
       <a href="#top">Home</a><a href="#services">Buy</a><a href="#sell">Sell</a><a href="#listings">Listings</a><a href="#explore">Explore</a><a href="#about">About</a><a href="#reviews">Reviews</a>
     </nav>
-    <a class="hdr-r" href="#contact">Contact</a>
+    <a class="hdr-r book" href="https://calendly.com/tianashomesolutions/30min" target="_blank" rel="noopener">Book a call</a>
   </div>
 </header>
 
@@ -374,6 +375,8 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
     <div>
       <h2>Get more information</h2>
       <p>Tell us a little about what you're looking for and Tiana will be in touch.</p>
+      <p style="margin-top:28px">Prefer to talk it through? Pick a time that works for you and we'll meet by phone or video.</p>
+      <a class="btn book" href="https://calendly.com/tianashomesolutions/30min" target="_blank" rel="noopener" style="margin-top:8px">Book a call with Tiana</a>
     </div>
     <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="#contact">
       <input type="hidden" name="form-name" value="contact">
@@ -462,5 +465,7 @@ f.src='https://player.vimeo.com/video/'+m[1]+'?'+(m[2]?'h='+m[2]+'&':'')+'autopl
 f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title='Home tour video';scr.innerHTML='';scr.appendChild(f)});
 })();
 </script>
+<script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+<script>document.addEventListener("click",function(e){var a=e.target.closest("a.book");if(!a||!window.Calendly)return;e.preventDefault();Calendly.initPopupWidget({url:a.href+"?hide_gdpr_banner=1&background_color=fffbf3&text_color=3f3d3b&primary_color=4d6d75"})})</script>
 </body>
 </html>
