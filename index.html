@@ -160,28 +160,6 @@ section[id],div[id]{scroll-margin-top:64px}
 @media(max-width:980px){.areas{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:600px){.areas{grid-template-columns:1fr;gap:20px}.area{aspect-ratio:4/3.4}}
 @media(prefers-reduced-motion:reduce){.area-img,.area::after{transition:none}}
-/* sales map */
-.salesmap{background:var(--deep);color:var(--white)}
-.salesmap h2{color:var(--white)}
-.sm-stats{display:flex;justify-content:center;gap:clamp(28px,6vw,80px);flex-wrap:wrap;margin:40px 0 44px}
-.sm-stats div{text-align:center}
-.sm-stats strong{display:block;font:400 clamp(36px,5vw,58px) var(--head);line-height:1.1}
-.sm-stats span{font:400 12px var(--body);letter-spacing:.22em;text-transform:uppercase;color:var(--sage)}
-.sm-wrap{position:relative;border:1px solid rgba(255,255,255,.25);padding:10px;max-width:1100px;margin:0 auto}
-#salesmap{height:min(560px,70vh);background:#1c282b}
-.sm-legend{display:flex;gap:26px;justify-content:center;margin-top:20px;font:400 12px var(--body);letter-spacing:.18em;text-transform:uppercase;color:var(--sage);flex-wrap:wrap}
-.sm-legend i{display:inline-block;width:12px;height:12px;border-radius:50%;margin-right:8px;vertical-align:-1px}
-.sm-note{max-width:640px;margin:22px auto 0;font-size:13px;color:#c9d2d3;text-align:center}
-.sm-dot{width:18px;height:18px;border-radius:50%;background:var(--taupe);border:2px solid #fff;box-shadow:0 0 0 0 rgba(163,143,124,.6);animation:smp 3s infinite}
-.sm-dot.fs{background:var(--slate)}
-@keyframes smp{0%{box-shadow:0 0 0 0 rgba(163,143,124,.55)}70%,100%{box-shadow:0 0 0 14px rgba(163,143,124,0)}}
-.leaflet-popup-content-wrapper{border-radius:0;background:var(--cream);color:var(--ink);font-family:var(--body)}
-.leaflet-popup-tip{background:var(--cream)}
-.leaflet-popup-content{margin:16px 20px;line-height:1.5;font-size:14px}
-.sm-pop b{display:block;font:400 22px var(--head);letter-spacing:.04em;color:var(--deep)}
-.sm-pop small{display:block;color:var(--taupe);letter-spacing:.14em;text-transform:uppercase;font-size:11px;margin-top:6px}
-.leaflet-container{font-family:var(--body)}
-@media(prefers-reduced-motion:reduce){.sm-dot{animation:none}}
 /* about */
 .badge{width:120px;height:120px;margin-top:-60px;margin-left:auto;position:relative;z-index:2;color:var(--ink)}
 .badge text{font:400 11px var(--body);letter-spacing:.3em;fill:currentColor;text-transform:uppercase}
@@ -280,7 +258,6 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
 .reach b{display:block;font:400 18px var(--head);letter-spacing:.1em;text-transform:uppercase;color:var(--white);margin-bottom:4px}
 @media(max-width:860px){.social .social-split{grid-template-columns:1fr;gap:56px;justify-items:center}.social .social-text{width:100%}}
 </style>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
 <script>document.documentElement.classList.add("js")</script>
@@ -415,20 +392,6 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
       <a class="area" href="get-started.html?intent=explore&amp;area=Blount+County"><div class="area-img" style="background-image:linear-gradient(160deg,#2c3d42,#b5c1c0)" data-photo="images/areas/blount-county.jpg"></div><div class="area-t"><h3>Blount County</h3><span>Explore this area</span></div></a>
       <a class="area" href="get-started.html?intent=explore&amp;area=West+Knoxville"><div class="area-img" style="background-image:linear-gradient(160deg,#b5c1c0,#a38f7c)" data-photo="images/areas/west-knoxville.jpg"></div><div class="area-t"><h3>West Knoxville</h3><p>Farragut &middot; Hardin Valley &middot; Oak Ridge</p><span>Explore this area</span></div></a>
     </div>
-  </div>
-</section>
-
-<section class="salesmap" id="sales">
-  <div class="wrap center">
-    <p class="eyebrow">Proven results</p>
-    <h2>Where we&rsquo;ve sold</h2>
-    <div class="sm-stats">
-      <div><strong>153</strong><span>Homes closed</span></div>
-      <div><strong>18</strong><span>In the last 12 months</span></div>
-    </div>
-    <div class="sm-wrap"><div id="salesmap" role="img" aria-label="Map of recent home sales around Knoxville, Tennessee"></div></div>
-    <div class="sm-legend"><span><i style="background:var(--taupe)"></i>Recently sold</span><span><i style="background:var(--slate)"></i>Currently for sale</span></div>
-    <p class="sm-note">A selection of recent activity. Tap a dot for details. Based on public sales data from Tiana&rsquo;s Zillow profile.</p>
   </div>
 </section>
 
@@ -629,25 +592,6 @@ function run(){p.classList.add('in');if(rm)return;p.querySelectorAll('[data-coun
 (function f(n){var k=Math.min(1,(n-s)/d),v=Math.round(t*(1-Math.pow(1-k,3)));e.textContent=v.toLocaleString('en-US');if(k<1)requestAnimationFrame(f)})(s)})}
 if(!('IntersectionObserver' in window)){p.classList.add('in');return}
 var io=new IntersectionObserver(function(en){if(en[0].isIntersecting){io.disconnect();run()}},{threshold:.5});io.observe(p)})();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script>
-(function(){var el=document.getElementById('salesmap');if(!el||!window.L)return;
-// ===== SALES DATA: add rows here. [lat, lng, price, address, beds, baths, sqft, status, side] =====
-var D=[[35.8904,-83.9068,'$386,000','7112 Bonny Kate Dr, Knoxville, TN 37920',3,2,'1,842','sold','Represented the seller'],
-[35.9186,-83.8904,'$274,000','5711 Cilla Rd, Knoxville, TN 37920',3,1,'1,388','sold','Represented the buyer'],
-[35.7031,-84.0257,'$370,000','3017 Pleasant View Ave, Maryville, TN 37803',4,2,'1,752','sold','Represented the seller'],
-[35.8868,-83.8916,'$455,000','7029 Banyon Wood Ln, Knoxville, TN 37920',4,3,'2,642','sold','Represented the buyer'],
-[35.7735,-84.0705,'$559,900','1005 Freda Ln, Friendsville, TN 37737',3,2,'1,512','fs','Currently for sale'],
-[35.9723,-83.9376,'$344,900','1243 Exeter Ave, Knoxville, TN 37921',4,3,'1,680','fs','Currently for sale']];
-var map=L.map(el,{scrollWheelZoom:false,zoomControl:true,attributionControl:true}).setView([35.88,-83.95],10);
-L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'&copy; OpenStreetMap contributors &copy; CARTO',maxZoom:18,subdomains:'abcd'}).addTo(map);
-var pts=[];D.forEach(function(d){var ic=L.divIcon({className:'',html:'<div class="sm-dot'+(d[7]==='fs'?' fs':'')+'"></div>',iconSize:[18,18],iconAnchor:[9,9],popupAnchor:[0,-10]});
-var m=L.marker([d[0],d[1]],{icon:ic,title:d[3],keyboard:true}).addTo(map);
-m.bindPopup('<div class="sm-pop"><b>'+d[2]+'</b>'+d[3]+'<br>'+d[4]+' bd &middot; '+d[5]+' ba &middot; '+d[6]+' sqft<small>'+(d[7]==='fs'?'Currently for sale':'Sold &middot; '+d[8])+'</small></div>');pts.push([d[0],d[1]])});
-map.fitBounds(pts,{padding:[50,50],maxZoom:11});
-map.on('click',function(){map.scrollWheelZoom.enable()});map.on('mouseout',function(){map.scrollWheelZoom.disable()});
-})();
 </script>
 </body>
 </html>
