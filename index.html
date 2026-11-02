@@ -361,6 +361,7 @@ html,body{overflow-x:clip}
 .vframe .mon-bezel::after{display:none}
 .vframe .mon-screen{border-radius:0}
 @media(max-width:860px){.vframe::after{inset:10px -8px -10px 10px}}
+.screen .mon-sound{left:50%;right:auto;transform:translateX(-50%);bottom:30px;padding:8px 14px 8px 10px;font-size:11px;white-space:nowrap}
 </style>
 </head>
 <body>
@@ -638,21 +639,6 @@ els.forEach(function(e){io.observe(e)});
 </script>
 <script>
 (function(){
-var rm=matchMedia('(prefers-reduced-motion: reduce)').matches;
-function src(u){var m=(u||'').match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([a-z0-9]+))?/i);if(!m)return null;
-var q=[];if(m[2])q.push('h='+m[2]);
-if(rm){q.push('autoplay=0')}else{q.push('background=1','autoplay=1','muted=1','loop=1','autopause=0')}
-q.push('playsinline=1','dnt=1');return 'https://player.vimeo.com/video/'+m[1]+'?'+q.join('&')}
-var screens=[].slice.call(document.querySelectorAll('.screen[data-vimeo]')).filter(function(e){return src(e.dataset.vimeo)});
-if(!screens.length)return;
-var load=function(e){if(e.querySelector('iframe'))return;var f=document.createElement('iframe');f.src=src(e.dataset.vimeo);f.allow='autoplay; fullscreen; picture-in-picture';f.title='Listing marketing video';f.loading='lazy';e.innerHTML='';e.appendChild(f)};
-if(!('IntersectionObserver' in window)){screens.forEach(load);return}
-var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){load(x.target);io.unobserve(x.target)}})},{rootMargin:'200px 0px'});
-screens.forEach(function(e){io.observe(e)});
-})();
-</script>
-<script>
-(function(){
 if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
 var sec=document.getElementById('social');if(!sec)return;
 var figs=[].slice.call(sec.querySelectorAll('.pfig')),depth=[-34,-72,-34],tick=false;
@@ -664,7 +650,7 @@ addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(f
 </script>
 <script src="https://player.vimeo.com/api/player.js" async></script>
 <script>
-[].forEach.call(document.querySelectorAll('.mon-screen'),function(scr){
+[].forEach.call(document.querySelectorAll('.mon-screen,.screen[data-vimeo]'),function(scr){
 var m=(scr.dataset.vimeo||'').match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([a-z0-9]+))?/i);if(!m)return;
 var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,player=null,visible=false,muted=true,started=false;
 var btn=document.createElement('button');btn.type='button';btn.className='mon-sound';btn.setAttribute('aria-pressed','false');btn.hidden=true;
@@ -672,9 +658,10 @@ btn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4
 scr.appendChild(btn);
 function setBtn(){btn.classList.toggle('on',!muted);btn.setAttribute('aria-pressed',!muted);btn.querySelector('span').textContent=muted?'Tap for sound':'Sound on'}
 function build(){if(started)return;started=true;
+[].forEach.call(scr.querySelectorAll('.ph-note'),function(n){n.remove()});
 var f=document.createElement('iframe');
 f.src='https://player.vimeo.com/video/'+m[1]+'?'+(m[2]?'h='+m[2]+'&':'')+'autoplay='+(rm?0:1)+'&muted=1&loop=1&title=0&byline=0&portrait=0&dnt=1&playsinline=1&autopause=0';
-f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title='Home tour video';scr.insertBefore(f,btn);
+f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title=scr.classList.contains('screen')?'Listing marketing video':'Home tour video';scr.insertBefore(f,btn);
 btn.hidden=false;setBtn();
 function init(){if(!window.Vimeo){return setTimeout(init,300)}player=new Vimeo.Player(f);if(!visible)player.pause().catch(function(){})}
 init()}
