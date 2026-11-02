@@ -754,7 +754,6 @@ var m=d.querySelector('.dd-m');new MutationObserver(function(){b.classList.toggl
 (function(){
 var K='twg_welcome_seen',box=document.getElementById('wm');if(!box)return;
 var force=/[?&]welcome(=|&|$)/.test(location.search);
-try{var t=+localStorage.getItem(K);if(!force&&t&&Date.now()-t<30*864e5)return}catch(e){}
 function seen(){try{localStorage.setItem(K,Date.now())}catch(e){}}
 var form=document.getElementById('wm-form'),qs=[].slice.call(form.querySelectorAll('.wm-q')),bars=[].slice.call(box.querySelectorAll('.wm-prog i')),next=document.getElementById('wm-next'),err=document.getElementById('wm-err'),i=0,last=null,opened=false;
 function open(){if(opened)return;opened=true;last=document.activeElement;box.hidden=false;box.classList.add('show');requestAnimationFrame(function(){box.classList.add('in')});document.body.style.overflow='hidden';var bx=box.querySelector('.wm-box');bx.setAttribute('tabindex','-1');bx.focus({preventScroll:true})}
@@ -774,8 +773,7 @@ form.addEventListener('keydown',function(e){if(e.key==='Enter'&&e.target.tagName
 box.addEventListener('click',function(e){if(e.target===box||e.target.closest('[data-close]'))close()});
 document.addEventListener('keydown',function(e){if(box.hidden)return;if(e.key==='Escape')close();if(e.key==='Tab'){var f=[].slice.call(box.querySelectorAll('button,input,a[href]')).filter(function(x){return !x.disabled&&x.offsetParent!==null});if(!f.length)return;var a=f[0],z=f[f.length-1];if(e.shiftKey&&document.activeElement===a){e.preventDefault();z.focus()}else if(!e.shiftKey&&document.activeElement===z){e.preventDefault();a.focus()}}});
 show(0);
-var timer=setTimeout(open,force?1200:9000);
-addEventListener('scroll',function s(){if(scrollY>innerHeight*1.2){removeEventListener('scroll',s);clearTimeout(timer);setTimeout(open,400)}},{passive:true});
+setTimeout(open,force?1200:10000);
 })();
 </script>
 </body>
