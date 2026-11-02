@@ -296,6 +296,13 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
 .mon-bezel::after{content:"";position:absolute;left:50%;bottom:13px;width:6px;height:6px;margin-left:-3px;border-radius:50%;background:#2a3032}
 .mon-screen{position:relative;aspect-ratio:16/9;background:#0b0f10;border-radius:4px;overflow:hidden}
 .mon-screen iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.mon-screen{background:#0b0f10 url(images/house.jpg) center/cover}
+.mon-sound{position:absolute;right:16px;bottom:16px;z-index:3;display:inline-flex;align-items:center;gap:10px;padding:11px 18px 11px 14px;border:1px solid rgba(255,255,255,.7);border-radius:999px;background:rgba(20,28,31,.62);backdrop-filter:blur(6px);color:#fff;font:400 12px var(--body);letter-spacing:.2em;text-transform:uppercase;cursor:pointer;transition:.25s}
+.mon-sound:hover,.mon-sound:focus-visible{background:var(--taupe);border-color:var(--taupe)}
+.mon-sound svg{width:20px;height:20px;fill:currentColor}
+.mon-sound .w{display:none}.mon-sound.on .w{display:inline}.mon-sound.on .x{display:none}
+.mon-sound[hidden]{display:none}
+@media(max-width:600px){.mon-sound{right:8px;bottom:8px;padding:9px 13px 9px 10px;font-size:11px}}
 .mon-poster{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#0b0f10 url(images/house.jpg) center/cover;display:grid;place-items:center}
 .mon-poster::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(10,16,18,.15),rgba(10,16,18,.65));transition:opacity .4s}
 .mon-poster::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,0) 28%);pointer-events:none}
@@ -424,11 +431,9 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
   <div class="wrap">
     <p class="eyebrow">Home tour</p>
     <h2>Step inside</h2>
-    <p class="lead">Press play to walk through one of our listings, with sound.</p>
     <div class="monitor">
       <div class="mon-body"><div class="mon-bezel"><div class="mon-screen" data-vimeo="https://vimeo.com/1172902233">
-        <button class="mon-poster" type="button" aria-label="Play the home tour video"><span class="play"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 3.5v17l14-8.5z"/></svg></span></button>
-      </div></div></div>
+        </div></div></div>
       <div class="mon-neck"></div><div class="mon-base"></div>
     </div>
   </div>
@@ -615,13 +620,27 @@ figs.forEach(function(e,i){e.style.setProperty('--fy',(p*(depth[i]||-40)).toFixe
 addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(f)}},{passive:true});addEventListener('resize',f);f();
 })();
 </script>
+<script src="https://player.vimeo.com/api/player.js" async></script>
 <script>
 (function(){
-var scr=document.querySelector('.mon-screen'),btn=scr&&scr.querySelector('.mon-poster');if(!btn)return;
+var scr=document.querySelector('.mon-screen');if(!scr)return;
 var m=(scr.dataset.vimeo||'').match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([a-z0-9]+))?/i);if(!m)return;
-btn.addEventListener('click',function(){var f=document.createElement('iframe');
-f.src='https://player.vimeo.com/video/'+m[1]+'?'+(m[2]?'h='+m[2]+'&':'')+'autoplay=1&title=0&byline=0&portrait=0&dnt=1';
-f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title='Home tour video';scr.innerHTML='';scr.appendChild(f)});
+var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,player=null,visible=false,muted=true,started=false;
+var btn=document.createElement('button');btn.type='button';btn.className='mon-sound';btn.setAttribute('aria-pressed','false');btn.hidden=true;
+btn.innerHTML='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 4V5L8 9z"/><g class="x"><path d="M16 9l5 6M21 9l-5 6" stroke="currentColor" stroke-width="1.8" fill="none"/></g><g class="w"><path d="M16 8.5a5 5 0 0 1 0 7M18.6 6a8.5 8.5 0 0 1 0 12" stroke="currentColor" stroke-width="1.8" fill="none"/></g></svg><span>Sound off</span>';
+scr.appendChild(btn);
+function setBtn(){btn.classList.toggle('on',!muted);btn.setAttribute('aria-pressed',!muted);btn.querySelector('span').textContent=muted?'Tap for sound':'Sound on'}
+function build(){if(started)return;started=true;
+var f=document.createElement('iframe');
+f.src='https://player.vimeo.com/video/'+m[1]+'?'+(m[2]?'h='+m[2]+'&':'')+'autoplay='+(rm?0:1)+'&muted=1&loop=1&title=0&byline=0&portrait=0&dnt=1&playsinline=1&autopause=0';
+f.allow='autoplay; fullscreen; picture-in-picture';f.allowFullscreen=true;f.title='Home tour video';scr.insertBefore(f,btn);
+btn.hidden=false;setBtn();
+function init(){if(!window.Vimeo){return setTimeout(init,300)}player=new Vimeo.Player(f);if(!visible)player.pause().catch(function(){})}
+init()}
+btn.addEventListener('click',function(){if(!player)return;muted=!muted;
+(muted?player.setMuted(true):player.setMuted(false).then(function(){return player.setVolume(1)})).then(function(){if(!muted)return player.play()}).catch(function(){muted=true}).then(setBtn);setBtn()});
+if(!('IntersectionObserver' in window)){build();return}
+new IntersectionObserver(function(en){var v=en[0].isIntersecting;visible=v;if(v){build();if(player&&!rm)player.play().catch(function(){})}else if(player){player.pause().catch(function(){})}},{threshold:.3,rootMargin:'400px 0px'}).observe(scr);
 })();
 </script>
 <script>
