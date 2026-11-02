@@ -303,6 +303,19 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
 .mon-sound .w{display:none}.mon-sound.on .w{display:inline}.mon-sound.on .x{display:none}
 .mon-sound[hidden]{display:none}
 @media(max-width:600px){.mon-sound{right:8px;bottom:8px;padding:9px 13px 9px 10px;font-size:11px}}
+/* SoKno */
+.sokno{background:var(--cream);overflow:hidden}
+.sokno .split{grid-template-columns:1.15fr .85fr;gap:72px;align-items:center}
+.sokno .monitor{margin:0;max-width:none}
+.sokno .mon-neck{height:44px}
+.sokno h2{color:var(--deep)}
+.sokno h2 small{display:block;font:400 14px var(--body);letter-spacing:.28em;color:var(--taupe);margin-top:14px;text-transform:uppercase}
+.sokno-q{list-style:none;padding:0;margin:26px 0 32px}
+.sokno-q li{padding:13px 0 13px 28px;border-top:1px solid rgba(163,143,124,.4);position:relative;font-size:16px;line-height:1.55}
+.sokno-q li:last-child{border-bottom:1px solid rgba(163,143,124,.4)}
+.sokno-q li::before{content:"";position:absolute;left:4px;top:23px;width:9px;height:9px;border:1px solid var(--taupe);border-radius:50%}
+.sokno-cta{display:flex;gap:14px;flex-wrap:wrap}
+@media(max-width:860px){.sokno .split{grid-template-columns:1fr;gap:44px}}
 .mon-poster{position:absolute;inset:0;width:100%;height:100%;border:0;padding:0;cursor:pointer;background:#0b0f10 url(images/house.jpg) center/cover;display:grid;place-items:center}
 .mon-poster::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(10,16,18,.15),rgba(10,16,18,.65));transition:opacity .4s}
 .mon-poster::after{content:"";position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.1) 0%,rgba(255,255,255,0) 28%);pointer-events:none}
@@ -457,6 +470,26 @@ footer img{height:56px;width:auto;background:var(--white);padding:6px}
   </div>
 </section>
 
+<section class="sokno" id="sokno">
+  <div class="wrap split">
+    <div class="monitor">
+      <div class="mon-body"><div class="mon-bezel"><div class="mon-screen" data-vimeo="https://vimeo.com/1172181992"></div></div></div>
+      <div class="mon-neck"></div><div class="mon-base"></div>
+    </div>
+    <div>
+      <p class="eyebrow">Moving to South Knoxville?</p>
+      <h2>Welcome to SoKno<small>South Knoxville, Tennessee</small></h2>
+      <p>Just across the river from downtown, South Knoxville has a personality all its own. Take a look around, then let&rsquo;s talk about whether SoKno fits your next chapter.</p>
+      <ul class="sokno-q">
+        <li>Dreaming of trails and the river close to home?</li>
+        <li>Wondering which SoKno neighborhoods fit your life?</li>
+        <li>Curious what it&rsquo;s really like to live here?</li>
+      </ul>
+      <div class="sokno-cta"><a class="btn" href="get-started.html?intent=explore&amp;area=South+Knoxville">Ask Tiana about SoKno</a><a class="btn" href="book.html">Book a call</a></div>
+    </div>
+  </div>
+</section>
+
 <section id="about">
   <div class="wrap split rev">
     <div>
@@ -587,7 +620,7 @@ if(!rm&&y<innerHeight*1.3){hero.style.setProperty('--hy',(y*0.18).toFixed(1)+'px
 var f=Math.max(0,1-y/(innerHeight*0.8));hw.style.opacity=f;hw.style.transform='translate3d(0,'+(y*0.1).toFixed(1)+'px,0)'}}
 addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(upd)}},{passive:true});upd();
 if(rm||!('IntersectionObserver' in window)){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')});return}
-var sel='main section:not(.hero) .eyebrow, main section:not(.hero) h2, main section:not(.hero) .split p, .intro p, .frame, .phone, .monitor, .card, .pillar, .lcard, .loc, .q, .rcard, .area, .life a, .sell .box, .awards, form:not(.search)';
+var sel='main section:not(.hero) .eyebrow, main section:not(.hero) h2, main section:not(.hero) .split p, .intro p, .frame, .phone, .monitor, .card, .pillar, .lcard, .loc, .q, .rcard, .area, .sokno .monitor, .life a, .sell .box, .awards, form:not(.search)';
 var els=document.querySelectorAll(sel);
 els.forEach(function(e){e.classList.add('rv');var sibs=e.parentElement?[].slice.call(e.parentElement.children).filter(function(c){return c.classList.contains('rv')||c.matches(sel)}):[];var i=Math.min(sibs.indexOf(e),4);if(e.matches('.card,.pillar,.lcard,.loc,.q,.area,.life a')&&i>0)e.style.setProperty('--d',(i*0.12)+'s')});
 var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{rootMargin:'0px 0px -10% 0px',threshold:0.08});
@@ -622,8 +655,7 @@ addEventListener('scroll',function(){if(!tick){tick=true;requestAnimationFrame(f
 </script>
 <script src="https://player.vimeo.com/api/player.js" async></script>
 <script>
-(function(){
-var scr=document.querySelector('.mon-screen');if(!scr)return;
+[].forEach.call(document.querySelectorAll('.mon-screen'),function(scr){
 var m=(scr.dataset.vimeo||'').match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/([a-z0-9]+))?/i);if(!m)return;
 var rm=matchMedia('(prefers-reduced-motion: reduce)').matches,player=null,visible=false,muted=true,started=false;
 var btn=document.createElement('button');btn.type='button';btn.className='mon-sound';btn.setAttribute('aria-pressed','false');btn.hidden=true;
@@ -641,7 +673,7 @@ btn.addEventListener('click',function(){if(!player)return;muted=!muted;
 (muted?player.setMuted(true):player.setMuted(false).then(function(){return player.setVolume(1)})).then(function(){if(!muted)return player.play()}).catch(function(){muted=true}).then(setBtn);setBtn()});
 if(!('IntersectionObserver' in window)){build();return}
 new IntersectionObserver(function(en){var v=en[0].isIntersecting;visible=v;if(v){build();if(player&&!rm)player.play().catch(function(){})}else if(player){player.pause().catch(function(){})}},{threshold:.3,rootMargin:'400px 0px'}).observe(scr);
-})();
+});
 </script>
 <script>
 (function(){document.querySelectorAll('.rcard .rtxt').forEach(function(t){if(t.scrollHeight<=t.clientHeight+2)return;var b=document.createElement('button');b.type='button';b.className='more';b.textContent='Read more';b.addEventListener('click',function(){var o=t.classList.toggle('open');b.textContent=o?'Show less':'Read more'});t.after(b)})})();
