@@ -353,6 +353,14 @@ footer .compliance img{height:46px;width:auto;background:none;padding:0}
 html,body{overflow-x:clip}
 @media(max-width:860px){.wrap{padding:0 22px}.frame::after{inset:10px -8px -10px 10px}.hero-photo{padding-top:76px}.hero-photo img{aspect-ratio:4/3}.wrap.frame::after{inset:10px 12px -10px 32px}}
 @media(max-width:480px){h2{letter-spacing:.04em}.btn{padding:14px 22px;letter-spacing:.18em}}
+.sokno{background:var(--white)}
+.vframe{position:relative}
+.vframe::after{content:"";position:absolute;inset:16px -16px -16px 16px;border:1px solid var(--taupe);pointer-events:none}
+.vframe .mon-body{background:none;padding:0;border-radius:0;box-shadow:0 30px 60px -30px rgba(44,61,66,.45)}
+.vframe .mon-bezel{background:none;padding:0;border-radius:0;position:relative;z-index:1}
+.vframe .mon-bezel::after{display:none}
+.vframe .mon-screen{border-radius:0}
+@media(max-width:860px){.vframe::after{inset:10px -8px -10px 10px}}
 </style>
 </head>
 <body>
@@ -486,6 +494,25 @@ html,body{overflow-x:clip}
   </div>
 </section>
 
+<section class="sokno" id="sokno">
+  <div class="wrap split">
+    <div class="monitor vframe">
+      <div class="mon-body"><div class="mon-bezel"><div class="mon-screen" data-vimeo="https://vimeo.com/1172181992"></div></div></div>
+    </div>
+    <div>
+      <p class="eyebrow">Moving to South Knoxville?</p>
+      <h2>Welcome to SoKno<small>South Knoxville, Tennessee</small></h2>
+      <p>Just across the river from downtown, South Knoxville has a personality all its own. Take a look around, then let&rsquo;s talk about whether SoKno fits your next chapter.</p>
+      <ul class="sokno-q">
+        <li>Dreaming of trails and the river close to home?</li>
+        <li>Wondering which SoKno neighborhoods fit your life?</li>
+        <li>Curious what it&rsquo;s really like to live here?</li>
+      </ul>
+      <div class="sokno-cta"><a class="btn" href="get-started.html?intent=explore&amp;area=South+Knoxville">Ask Tiana about SoKno</a><a class="btn" href="book.html">Book a call</a></div>
+    </div>
+  </div>
+</section>
+
 <section class="dark" id="services">
   <div class="wrap center">
     <h2>Simplifying real estate,</h2>
@@ -527,26 +554,6 @@ html,body{overflow-x:clip}
   </div>
 </section>
 
-
-<section class="sokno" id="sokno">
-  <div class="wrap split">
-    <div class="monitor">
-      <div class="mon-body"><div class="mon-bezel"><div class="mon-screen" data-vimeo="https://vimeo.com/1172181992"></div></div></div>
-      <div class="mon-neck"></div><div class="mon-base"></div>
-    </div>
-    <div>
-      <p class="eyebrow">Moving to South Knoxville?</p>
-      <h2>Welcome to SoKno<small>South Knoxville, Tennessee</small></h2>
-      <p>Just across the river from downtown, South Knoxville has a personality all its own. Take a look around, then let&rsquo;s talk about whether SoKno fits your next chapter.</p>
-      <ul class="sokno-q">
-        <li>Dreaming of trails and the river close to home?</li>
-        <li>Wondering which SoKno neighborhoods fit your life?</li>
-        <li>Curious what it&rsquo;s really like to live here?</li>
-      </ul>
-      <div class="sokno-cta"><a class="btn" href="get-started.html?intent=explore&amp;area=South+Knoxville">Ask Tiana about SoKno</a><a class="btn" href="book.html">Book a call</a></div>
-    </div>
-  </div>
-</section>
 
 <section>
   <div class="wrap split">
