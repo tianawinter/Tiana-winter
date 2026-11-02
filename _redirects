@@ -4,3 +4,5 @@
 # Clean URL for the booking page
 /book     /book.html   200
 /get-started  /get-started.html  200
+/buy  /buy.html  200
+/sell  /sell.html  200
