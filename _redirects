@@ -6,3 +6,5 @@
 /get-started  /get-started.html  200
 /buy  /buy.html  200
 /sell  /sell.html  200
+/links  /links.html  200
+/links.html  /links  301
