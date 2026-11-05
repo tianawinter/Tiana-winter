@@ -1,6 +1,7 @@
 /*.vcf
   Content-Type: text/vcard; charset=utf-8
   Content-Disposition: attachment; filename="Tiana-Winter.vcf"
+  Cache-Control: no-cache
 
 /links
   X-Robots-Tag: noindex, nofollow
