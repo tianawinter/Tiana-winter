@@ -26,13 +26,15 @@ a{color:inherit;text-decoration:none}
 .top{background:var(--deep);color:var(--white);text-align:center;padding:44px 24px 74px;position:relative}
 .top::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:34px;background:var(--cream);border-radius:34px 34px 0 0}
 .av{width:132px;height:132px;border-radius:50%;border:2px solid var(--taupe);padding:5px;margin:0 auto 20px;background:var(--deep)}
-.av img{width:100%;height:100%;border-radius:50%;object-fit:cover;display:block}
+.av img{width:100%;height:100%;border-radius:50%;object-fit:cover;object-position:center;display:block}
 h1{font:400 clamp(30px,8vw,40px)/1.1 var(--head);text-transform:uppercase;letter-spacing:.1em;-webkit-text-stroke:.3px currentColor}
 .role{font:500 11px var(--body);letter-spacing:.26em;text-transform:uppercase;color:var(--sage);margin-top:12px;line-height:1.9}
-.stars{display:inline-flex;gap:8px;align-items:center;margin-top:16px;font-size:13px;letter-spacing:.06em;color:#e8e2d8;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px}
+.rate{display:flex;gap:12px 14px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:16px}
+.rv{font:500 11px var(--body);letter-spacing:.18em;text-transform:uppercase;border:1px solid rgba(255,255,255,.6);padding:7px 14px;color:#fff;transition:.2s}.rv:hover{background:var(--taupe);border-color:var(--taupe)}
+.stars{display:inline-flex;gap:8px;align-items:center;font-size:13px;letter-spacing:.06em;color:#e8e2d8;border-bottom:1px solid rgba(255,255,255,.35);padding-bottom:2px}
 .stars em{font-style:normal;color:var(--taupe);letter-spacing:.14em}
 main{max-width:520px;margin:-14px auto 0;padding:0 20px 36px;position:relative;z-index:2}
-.acts{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:-26px 0 26px}
+.acts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:-26px 0 26px}
 .acts a{background:var(--white);border:1px solid #e3ddd1;display:flex;flex-direction:column;align-items:center;gap:7px;padding:15px 4px 12px;font:500 11px var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--deep);box-shadow:0 10px 24px -14px rgba(44,61,66,.45);transition:.2s}
 .acts a:hover,.acts a:focus-visible{background:var(--deep);color:var(--white);transform:translateY(-2px)}
 .grp{font:500 11px var(--body);letter-spacing:.26em;text-transform:uppercase;color:var(--taupe);margin:30px 0 12px;display:flex;align-items:center;gap:14px}
@@ -46,6 +48,20 @@ main{max-width:520px;margin:-14px auto 0;padding:0 20px 36px;position:relative;z
 .lk.pri{background:var(--deep);border-color:var(--deep)}
 .lk.pri b{color:var(--white);-webkit-text-stroke:.3px #fff}.lk.pri i{color:var(--sage)}.lk.pri .ar{color:var(--white)}
 .lk.pri:hover{background:var(--slate);border-color:var(--slate)}
+.dd{background:var(--white);border:1px solid #e3ddd1;margin-bottom:10px;transition:border-color .2s,box-shadow .2s}
+.dd[open]{border-color:var(--taupe);box-shadow:0 12px 26px -16px rgba(44,61,66,.5)}
+.dd summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:14px;padding:17px 20px;min-height:58px}
+.dd summary::-webkit-details-marker{display:none}
+.dd summary b{font:400 17px var(--head);text-transform:uppercase;letter-spacing:.1em;color:var(--deep);-webkit-text-stroke:.3px var(--deep);line-height:1.25}
+.dd summary .ar{flex:none;color:var(--taupe);transition:transform .25s}
+.dd[open] summary .ar{transform:rotate(180deg)}
+.dd:hover{border-color:var(--taupe)}
+.dd-b{padding:0 20px 20px;border-top:1px solid #efe9dd;padding-top:14px}
+.dd-b p{font-size:15px;line-height:1.55;color:#55524f;margin-bottom:14px}
+.go{display:inline-flex;align-items:center;gap:10px;background:var(--deep);color:var(--white);font:500 11.5px var(--body);letter-spacing:.2em;text-transform:uppercase;padding:12px 20px;transition:.2s}
+.go:hover,.go:focus-visible{background:var(--slate)}
+.savebtn{display:flex;align-items:center;justify-content:center;gap:12px;margin:26px 0 0;padding:16px;border:1px solid var(--deep);color:var(--deep);font:500 12px var(--body);letter-spacing:.22em;text-transform:uppercase;transition:.2s}
+.savebtn:hover,.savebtn:focus-visible{background:var(--deep);color:var(--white)}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .two .lk{margin:0;padding:14px 16px}.two .lk i{display:none}.two .lk b{font-size:15px}
 .soc{display:flex;justify-content:center;gap:12px;margin:34px 0 8px}
@@ -66,38 +82,34 @@ footer .rea{height:44px;width:auto;margin:0 auto 10px;display:block}
   <div class="av"><img src="images/links-avatar.jpg" alt="Tiana Winter" width="300" height="300"></div>
   <h1>Tiana Winter</h1>
   <p class="role">REALTOR&reg; &middot; The Winterhaven Group<br>Knoxville &amp; East Tennessee</p>
-  <a class="stars" href="index.html#reviews"><em>&#9733;&#9733;&#9733;&#9733;&#9733;</em> 5.0 &middot; 61 Google reviews</a>
+  <div class="rate"><a class="stars" href="index.html#reviews"><em>&#9733;&#9733;&#9733;&#9733;&#9733;</em> 5.0 &middot; 61 Google reviews</a><a class="rv" href="review" target="_blank" rel="noopener">Leave a review</a></div>
 </header>
 <main>
   <nav class="acts" aria-label="Contact">
     <a href="tel:+18652972451"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2z"/></svg>Call</a>
     <a href="sms:+18652972451"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 5h16v11H9l-5 4z"/></svg>Text</a>
     <a href="mailto:Tianashomesolutions@gmail.com"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>Email</a>
-    <a href="tiana-winter.vcf" download="Tiana-Winter.vcf"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M18 3v4M16 5h4"/></svg>Save</a>
   </nav>
 
   <a class="lk pri" href="book.html"><span><b>Book a call or appointment</b><i>Pick a time that works for you</i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
 
   <p class="grp">Buy &amp; sell</p>
-  <a class="lk " href="buy.html"><span><b>Buy a home</b><i>Questions, mortgage calculator and a free guide</i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  <a class="lk " href="sell.html"><span><b>Sell your home</b><i>Tell me about your home and your timeline</i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  <a class="lk " href="https://tianawinter.idxbroker.com/idx/search/advanced"><span><b>Search homes</b><i>Every home for sale in East Tennessee</i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  <a class="lk " href="https://tianawinter.idxbroker.com/idx/homevaluation"><span><b>What's my home worth?</b><i>Request your home value</i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <details class="dd"><summary><b>Buy a home</b><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="dd-b"><p>Tell me what you&rsquo;re looking for and get your free buyer&rsquo;s guide.</p><a class="go" href="buy.html">Go to the buyer page <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></details>
+  <details class="dd"><summary><b>Sell your home</b><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="dd-b"><p>Share your home and your timeline for a personal market review.</p><a class="go" href="sell.html">Go to the seller page <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></details>
+  <details class="dd"><summary><b>Search homes</b><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="dd-b"><p>Browse every home for sale in East Tennessee.</p><a class="go" href="https://tianawinter.idxbroker.com/idx/search/advanced">Search homes <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></details>
+  <details class="dd"><summary><b>What's my home worth?</b><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="dd-b"><p>Request your home value in a few quick steps.</p><a class="go" href="https://tianawinter.idxbroker.com/idx/homevaluation">Get my home value <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></details>
 
   <p class="grp">Free resources</p>
-  <a class="lk " href="buyers-guide.pdf" target="_blank" rel="noopener"><span><b>Home buyer&rsquo;s guide</b><i>Free 12-page guide to East Tennessee</i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  <a class="lk " href="index.html#sokno"><span><b>Moving to South Knoxville?</b><i>Welcome to SoKno</i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+  <details class="dd"><summary><b>Home buyer&rsquo;s guide</b><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="dd-b"><p>A free 12-page guide to buying in Knoxville and East Tennessee: budgeting, areas, zoning and negotiation.</p><a class="go" href="buyers-guide.pdf" target="_blank" rel="noopener">Download the guide <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></details>
+  <details class="dd"><summary><b>Mortgage calculator</b><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="dd-b"><p>Estimate your monthly payment with taxes, insurance and HOA.</p><a class="go" href="buy.html#calculator">Open the calculator <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></details>
 
   <p class="grp">About</p>
-  <a class="lk " href="index.html#about"><span><b>Meet Tiana</b><i>Your local guide, 300+ families served</i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  <a class="lk " href="index.html#reviews"><span><b>Client reviews</b><i>See what clients say on Google</i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  <div class="two">
-    <a class="lk " href="review" target="_blank" rel="noopener"><span><b>Leave a review</b><i></i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-    <a class="lk " href="get-started.html"><span><b>Get started</b><i></i></span><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-  </div>
+  <details class="dd"><summary><b>Meet Tiana</b><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="dd-b"><p>A local guide who has helped more than 300 families relocate and sell across East Tennessee.</p><a class="go" href="index.html#about">Meet Tiana <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></details>
+  <details class="dd"><summary><b>Get started</b><svg class="ar" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg></summary><div class="dd-b"><p>Answer a few quick questions and I&rsquo;ll point you in the right direction.</p><a class="go" href="get-started.html">Get started <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a></div></details>
 
   <div class="soc"><a href="https://www.instagram.com/tiana_sells_tennessee/" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" width="21" height="21" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3.2" y="3.2" width="17.6" height="17.6" rx="5"/><circle cx="12" cy="12" r="4.1"/><circle cx="17.4" cy="6.6" r="1.1" fill="currentColor" stroke="none"/></svg></a><a href="https://www.facebook.com/share/19yQqA2vkA/" target="_blank" rel="noopener" aria-label="Facebook"><svg viewBox="0 0 24 24" width="21" height="21" fill="currentColor"><path d="M13.6 21v-8h2.7l.4-3.2h-3.1V7.8c0-.9.3-1.5 1.6-1.5h1.7V3.4c-.3 0-1.3-.1-2.4-.1-2.4 0-4 1.5-4 4.1v2.4H7.8V13h2.7v8z"/></svg></a><a href="https://www.youtube.com/@tianawinterrelocation865" target="_blank" rel="noopener" aria-label="YouTube"><svg viewBox="0 0 24 24" width="23" height="23" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="2.6" y="5.4" width="18.8" height="13.2" rx="4"/><path d="M10.2 9.4v5.2l4.5-2.6z" fill="currentColor" stroke="none"/></svg></a></div>
   <p style="text-align:center"><a class="site" href="index.html">Visit tianawinter.com</a></p>
+  <a class="savebtn" href="tiana-winter.vcf" download="Tiana-Winter.vcf"><svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/><path d="M18 3v4M16 5h4"/></svg>Save my contact</a>
 </main>
 <footer>
   <img class="rea" src="images/rea-logo.png" alt="Realty Executives Associates">
